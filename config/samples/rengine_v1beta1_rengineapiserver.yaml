@@ -1,0 +1,12 @@
+apiVersion: rengine.wl4g.com/v1beta1
+kind: RengineApiServer
+metadata:
+  labels:
+    app.kubernetes.io/name: rengineapiserver
+    app.kubernetes.io/instance: rengineapiserver-sample
+    app.kubernetes.io/part-of: rengine-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: rengine-operator
+  name: rengineapiserver-sample
+spec:
+  # TODO(user): Add fields here

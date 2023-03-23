@@ -1,0 +1,85 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - rengine.wl4g.com
+  resources:
+  - rengineapiservers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - rengine.wl4g.com
+  resources:
+  - rengineapiservers/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - rengine.wl4g.com
+  resources:
+  - rengineapiservers/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - rengine.wl4g.com
+  resources:
+  - renginecontrollers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - rengine.wl4g.com
+  resources:
+  - renginecontrollers/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - rengine.wl4g.com
+  resources:
+  - renginecontrollers/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - rengine.wl4g.com
+  resources:
+  - rengineexecutors
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - rengine.wl4g.com
+  resources:
+  - rengineexecutors/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - rengine.wl4g.com
+  resources:
+  - rengineexecutors/status
+  verbs:
+  - get
+  - patch
+  - update

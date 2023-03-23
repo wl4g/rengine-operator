@@ -1,0 +1,27 @@
+# permissions for end users to view rengineapiservers.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: rengineapiserver-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: rengine-operator
+    app.kubernetes.io/part-of: rengine-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: rengineapiserver-viewer-role
+rules:
+- apiGroups:
+  - rengine.wl4g.com
+  resources:
+  - rengineapiservers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - rengine.wl4g.com
+  resources:
+  - rengineapiservers/status
+  verbs:
+  - get
