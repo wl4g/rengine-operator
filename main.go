@@ -110,6 +110,18 @@ func main() {
 		setupLog.Error(err, "unable to create controller", "controller", "RengineApiServer")
 		os.Exit(1)
 	}
+	if err = (&renginev1beta1.RengineApiServer{}).SetupWebhookWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create webhook", "webhook", "RengineApiServer")
+		os.Exit(1)
+	}
+	if err = (&renginev1beta1.RengineExecutor{}).SetupWebhookWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create webhook", "webhook", "RengineExecutor")
+		os.Exit(1)
+	}
+	if err = (&renginev1beta1.RengineController{}).SetupWebhookWithManager(mgr); err != nil {
+		setupLog.Error(err, "unable to create webhook", "webhook", "RengineController")
+		os.Exit(1)
+	}
 	//+kubebuilder:scaffold:builder
 
 	if err := mgr.AddHealthzCheck("healthz", healthz.Ping); err != nil {

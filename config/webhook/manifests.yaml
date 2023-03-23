@@ -1,0 +1,134 @@
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  creationTimestamp: null
+  name: mutating-webhook-configuration
+webhooks:
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: webhook-service
+      namespace: system
+      path: /mutate-rengine-wl4g-com-v1beta1-rengineapiserver
+  failurePolicy: Fail
+  name: mrengineapiserver.kb.io
+  rules:
+  - apiGroups:
+    - rengine.wl4g.com
+    apiVersions:
+    - v1beta1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - rengineapiservers
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: webhook-service
+      namespace: system
+      path: /mutate-rengine-wl4g-com-v1beta1-renginecontroller
+  failurePolicy: Fail
+  name: mrenginecontroller.kb.io
+  rules:
+  - apiGroups:
+    - rengine.wl4g.com
+    apiVersions:
+    - v1beta1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - renginecontrollers
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: webhook-service
+      namespace: system
+      path: /mutate-rengine-wl4g-com-v1beta1-rengineexecutor
+  failurePolicy: Fail
+  name: mrengineexecutor.kb.io
+  rules:
+  - apiGroups:
+    - rengine.wl4g.com
+    apiVersions:
+    - v1beta1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - rengineexecutors
+  sideEffects: None
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  creationTimestamp: null
+  name: validating-webhook-configuration
+webhooks:
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: webhook-service
+      namespace: system
+      path: /validate-rengine-wl4g-com-v1beta1-rengineapiserver
+  failurePolicy: Fail
+  name: vrengineapiserver.kb.io
+  rules:
+  - apiGroups:
+    - rengine.wl4g.com
+    apiVersions:
+    - v1beta1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - rengineapiservers
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: webhook-service
+      namespace: system
+      path: /validate-rengine-wl4g-com-v1beta1-renginecontroller
+  failurePolicy: Fail
+  name: vrenginecontroller.kb.io
+  rules:
+  - apiGroups:
+    - rengine.wl4g.com
+    apiVersions:
+    - v1beta1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - renginecontrollers
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: webhook-service
+      namespace: system
+      path: /validate-rengine-wl4g-com-v1beta1-rengineexecutor
+  failurePolicy: Fail
+  name: vrengineexecutor.kb.io
+  rules:
+  - apiGroups:
+    - rengine.wl4g.com
+    apiVersions:
+    - v1beta1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - rengineexecutors
+  sideEffects: None
